@@ -23,5 +23,10 @@ public class CalculatorTest {
 	public void testSummeZweiPositiveIsOk() {
 		assertTrue(testee.summe(10, 20) == 30);
 	}
+	
+	@Test
+	public void testSubtraktionZweiPositiveIsOk() {
+		assertTrue(testee.subtraktion(20, 10) == 10);
+	}
 
 }
