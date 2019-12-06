@@ -53,5 +53,10 @@ public class CalculatorTest {
 	public void testWurzelProtectedEinePositiveOk() {
 		assertTrue(testee.sqrRoot(4) == 2);
 	}
+	
+	@Test
+	public void testMultiplikationPackageZweiPositiveOk() {
+		assertTrue(testee.muliplikation(6, 4) == 24);
+	}
 
 }
