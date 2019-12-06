@@ -56,6 +56,11 @@ public class CalculatorTest {
 	}
 	
 	@Test
+	public void testSummeEineNegativeUndEinePositiveIsLessThenZero() {
+		assertTrue(testee.summe(-20, 3) < 0);
+	}
+	
+	@Test
 	public void testSubtraktionZweiPositiveIsOk() {
 		assertTrue(testee.subtraktion(20, 10) == 10);
 	}
