@@ -81,6 +81,11 @@ public class CalculatorTest {
 	}
 	
 	@Test
+	public void testSubtraktionMinValueUndNegativeIsOk() {
+		assertTrue(testee.subtraktion(Integer.MIN_VALUE, -10) == -2147483638);
+	}
+	
+	@Test
 	public void testDivisionZweiPositiveIsOk() {
 		assertTrue(testee.division(20, 10) == 2);
 	}
