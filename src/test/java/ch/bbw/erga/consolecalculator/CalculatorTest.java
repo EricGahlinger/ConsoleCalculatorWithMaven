@@ -48,5 +48,10 @@ public class CalculatorTest {
 	public void testDivisionDurchZeroIsNOk() {
 		testee.division(20, 0);
 	}
+	
+	@Test
+	public void testWurzelProtectedEinePositiveOk() {
+		assertTrue(testee.sqrRoot(4) == 2);
+	}
 
 }
