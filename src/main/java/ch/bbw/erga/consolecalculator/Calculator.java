@@ -22,4 +22,8 @@ public class Calculator {
 	protected double sqrRoot(int value) {
 		return Math.sqrt(value);
 	}
+	
+	int muliplikation(int value1, int value2) {
+		return value1 * value2;
+	}
 }
