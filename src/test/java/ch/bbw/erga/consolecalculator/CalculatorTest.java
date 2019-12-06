@@ -71,6 +71,11 @@ public class CalculatorTest {
 	}
 	
 	@Test
+	public void testSubtraktionEineNegativeUndEinePositiveIsOk() {
+		assertTrue(testee.subtraktion(20, -10) == 30);
+	}
+	
+	@Test
 	public void testDivisionZweiPositiveIsOk() {
 		assertTrue(testee.division(20, 10) == 2);
 	}
