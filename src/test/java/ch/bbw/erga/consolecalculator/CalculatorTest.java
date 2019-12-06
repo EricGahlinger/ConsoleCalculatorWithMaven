@@ -26,13 +26,18 @@ public class CalculatorTest {
 	}
 	
 	@Test
-	public void testSubtraktionZweiPositiveIsOk() {
-		assertTrue(testee.subtraktion(20, 10) == 10);
+	public void testSummeZweiNegativeIsOk() {
+		assertTrue(testee.summe(-10, -20) == -30);
 	}
 	
 	@Test
-	public void testSummeZweiNegativeIsOk() {
-		assertTrue(testee.summe(-10, -20) == -30);
+	public void testSummeEineNegativeUndEinePositiveIsOk() {
+		assertTrue(testee.summe(-4, 13) == 9);
+	}
+	
+	@Test
+	public void testSubtraktionZweiPositiveIsOk() {
+		assertTrue(testee.subtraktion(20, 10) == 10);
 	}
 	
 	@Test
@@ -68,5 +73,7 @@ public class CalculatorTest {
 	public void testQuadrierenPrivateZweiPositiveNOk() {
 		//assertTrue(testee.quadrieren(6) == 36);
 	}
+	
+	
 
 }
