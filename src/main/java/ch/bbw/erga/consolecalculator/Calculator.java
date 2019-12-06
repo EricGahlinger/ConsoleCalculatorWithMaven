@@ -26,4 +26,8 @@ public class Calculator {
 	int muliplikation(int value1, int value2) {
 		return value1 * value2;
 	}
+	
+	private int quadrieren(int value1) {
+		return value1 * value1;
+	}
 }
