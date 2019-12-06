@@ -1,8 +1,9 @@
 package ch.bbw.erga.consolecalculator;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -47,6 +48,25 @@ public class CalculatorTest {
 	@Test(expected=ArithmeticException.class)
 	public void testDivisionDurchZeroIsNOk() {
 		testee.division(20, 0);
+	}
+	
+	@Test
+	public void testWurzelProtectedEinePositiveOk() {
+		assertTrue(testee.sqrRoot(4) == 2);
+	}
+	
+	@Test
+	public void testMultiplikationPackageZweiPositiveOk() {
+		assertTrue(testee.muliplikation(6, 4) == 24);
+	}
+	
+	/*
+	 * Diese Methode kann nicht getestet werde, da sie privat ist.
+	 */
+	@Ignore
+	@Test
+	public void testQuadrierenPrivateZweiPositiveNOk() {
+		//assertTrue(testee.quadrieren(6) == 36);
 	}
 
 }
