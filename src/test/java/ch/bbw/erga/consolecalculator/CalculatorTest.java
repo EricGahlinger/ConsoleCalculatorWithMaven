@@ -37,8 +37,12 @@ public class CalculatorTest {
 	
 	@Test
 	public void testSummeMaxValueUndPositiveIsOk() {
-		System.out.println(Integer.MAX_VALUE + 15);
 		assertTrue(testee.summe(Integer.MAX_VALUE, 15) == -2147483634);
+	}
+	
+	@Test
+	public void testSummeMinValueUndPositiveIsOk() {
+		assertTrue(testee.summe(Integer.MIN_VALUE, 10) == -2147483638);
 	}
 	
 	@Test
