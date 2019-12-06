@@ -76,6 +76,11 @@ public class CalculatorTest {
 	}
 	
 	@Test
+	public void testSubtraktionMaxValueUndPositiveIsOk() {
+		assertTrue(testee.subtraktion(Integer.MAX_VALUE, 10) == 2147483637);
+	}
+	
+	@Test
 	public void testDivisionZweiPositiveIsOk() {
 		assertTrue(testee.division(20, 10) == 2);
 	}
