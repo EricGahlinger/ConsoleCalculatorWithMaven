@@ -95,6 +95,11 @@ public class CalculatorTest {
 		assertTrue(testee.division(20, 10) == 2);
 	}
 	
+	@Test
+	public void testDivisionEinePositiveEineNegativeIsGreaterThenZero() {
+		assertTrue(testee.division(32, 30) > 0);
+	}
+	
 	@Test(expected=ArithmeticException.class)
 	public void testDivisionDurchZeroIsNOk() {
 		testee.division(20, 0);
