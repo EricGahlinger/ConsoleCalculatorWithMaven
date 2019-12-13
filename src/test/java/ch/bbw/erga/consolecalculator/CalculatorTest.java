@@ -125,6 +125,11 @@ public class CalculatorTest {
 		assertTrue(testee.division(-12, -6) > 0);
 	}
 	
+	@Test
+	public void testDivisionSameNumbersIsOne() {
+		assertTrue(testee.division(5, 5) == 1);
+	}
+	
 	@Test(expected=ArithmeticException.class)
 	public void testDivisionDurchZeroIsNOk() {
 		testee.division(20, 0);
