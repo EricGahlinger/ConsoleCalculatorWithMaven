@@ -110,6 +110,11 @@ public class CalculatorTest {
 		assertTrue(testee.division(32, -30) < 0);
 	}
 	
+	@Test
+	public void testDivisionZweiNegativeIsOk() {
+		assertTrue(testee.division(-20, -10) == 2);
+	}
+	
 	@Test(expected=ArithmeticException.class)
 	public void testDivisionDurchZeroIsNOk() {
 		testee.division(20, 0);
