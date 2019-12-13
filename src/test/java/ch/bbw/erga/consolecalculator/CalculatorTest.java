@@ -120,6 +120,11 @@ public class CalculatorTest {
 		assertTrue(testee.division(Integer.MAX_VALUE, Integer.MAX_VALUE) == 1);
 	}
 	
+	@Test
+	public void testDivisionZweiNegativeGreaterThenZero() {
+		assertTrue(testee.division(-12, -6) > 0);
+	}
+	
 	@Test(expected=ArithmeticException.class)
 	public void testDivisionDurchZeroIsNOk() {
 		testee.division(20, 0);
