@@ -1,7 +1,10 @@
 package ch.bbw.erga.consolecalculator;
 
+import java.lang.Character.UnicodeScript;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.management.relation.RelationServiceNotRegisteredException;
 
 /**
  * 
@@ -40,6 +43,8 @@ public class Calculator {
 		double a;
 		double b;
 		double c;
+		
+		rechnung = rechnung.replaceAll("\\s", "");
 
 		try {
 			double zero = Double.parseDouble(rechnung.split("=")[1]);
@@ -48,9 +53,24 @@ public class Calculator {
 				String[] variables = calculationString.split("[+-]");
 
 				if (variables.length == 3) {
-					if (variables[0].matches("x*x")) {
+					if (variables[0].contains("x*x")) {
 						if (variables[1].contains("x")) {
 							if (!variables[2].contains("x")) {
+								String strA = variables[0].split("x*x")[0];
+								String strB = variables[1].split("x")[0];
+								
+								if(strA.isEmpty()) {
+									a = 1;
+								} else {
+									a = Double.parseDouble(strA);
+								}
+								if(strB.isEmpty()) {
+									b = 1;
+								} else {
+									b = Double.parseDouble(strB);
+								}
+								c = Double.parseDouble(variables[2]);
+								
 								
 							} else {
 								throw new IllegalArgumentException();
