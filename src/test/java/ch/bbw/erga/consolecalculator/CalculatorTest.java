@@ -26,13 +26,43 @@ public class CalculatorTest {
 	}
 	
 	@Test
-	public void testSubtraktionZweiPositiveIsOk() {
-		assertTrue(testee.subtraktion(20, 10) == 10);
+	public void testSummeZweiNegativeIsOk() {
+		assertTrue(testee.summe(-10, -20) == -30);
 	}
 	
 	@Test
-	public void testSummeZweiNegativeIsOk() {
-		assertTrue(testee.summe(-10, -20) == -30);
+	public void testSummeEineNegativeUndEinePositiveIsOk() {
+		assertTrue(testee.summe(-4, 13) == 9);
+	}
+	
+	@Test
+	public void testSummeMaxValueUndPositiveIsOk() {
+		assertTrue(testee.summe(Integer.MAX_VALUE, 15) == -2147483634);
+	}
+	
+	@Test
+	public void testSummeMinValueUndPositiveIsOk() {
+		assertTrue(testee.summe(Integer.MIN_VALUE, 10) == -2147483638);
+	}
+	
+	@Test
+	public void testSummeEineNegativeUndNullIsOk() {
+		assertTrue(testee.summe(0, 15) == 15);
+	}
+	
+	@Test
+	public void testSummeEineNegativeUndEinePositiveIsGreaterThenZero() {
+		assertTrue(testee.summe(-12, 15) > 0);
+	}
+	
+	@Test
+	public void testSummeEineNegativeUndEinePositiveIsLessThenZero() {
+		assertTrue(testee.summe(-20, 3) < 0);
+	}
+	
+	@Test
+	public void testSubtraktionZweiPositiveIsOk() {
+		assertTrue(testee.subtraktion(20, 10) == 10);
 	}
 	
 	@Test
@@ -41,8 +71,68 @@ public class CalculatorTest {
 	}
 	
 	@Test
+	public void testSubtraktionEineNegativeUndEinePositiveIsOk() {
+		assertTrue(testee.subtraktion(20, -10) == 30);
+	}
+	
+	@Test
+	public void testSubtraktionMaxValueUndPositiveIsOk() {
+		assertTrue(testee.subtraktion(Integer.MAX_VALUE, 10) == 2147483637);
+	}
+	
+	@Test
+	public void testSubtraktionMinValueUndNegativeIsOk() {
+		assertTrue(testee.subtraktion(Integer.MIN_VALUE, -10) == -2147483638);
+	}
+	
+	@Test
+	public void testSubtraktionPositiveUndNullIsOk() {
+		assertTrue(testee.subtraktion(10, 0) == 10);
+	}
+	
+	@Test
+	public void testSubtraktionPositiveUndNegativeGreaterThenZero() {
+		assertTrue(testee.subtraktion(10, -5) > 0);
+	}
+	
+	@Test
+	public void testSubtraktionZweiPositivrLessThenZero() {
+		assertTrue(testee.subtraktion(10, 15) < 0);
+	}
+	
+	@Test
 	public void testDivisionZweiPositiveIsOk() {
 		assertTrue(testee.division(20, 10) == 2);
+	}
+	
+	@Test
+	public void testDivisionEinePositiveEineNegativeIsLessThenZero() {
+		assertTrue(testee.division(32, -30) < 0);
+	}
+	
+	@Test
+	public void testDivisionZweiNegativeIsOk() {
+		assertTrue(testee.division(-20, -10) == 2);
+	}
+	
+	@Test
+	public void testDivisionZweiMaxValueIsOne() {
+		assertTrue(testee.division(Integer.MAX_VALUE, Integer.MAX_VALUE) == 1);
+	}
+	
+	@Test
+	public void testDivisionZweiNegativeGreaterThenZero() {
+		assertTrue(testee.division(-12, -6) > 0);
+	}
+	
+	@Test
+	public void testDivisionSameNumbersIsOne() {
+		assertTrue(testee.division(5, 5) == 1);
+	}
+	
+	@Test
+	public void testDivisionZeroAndPositiveIsOk() {
+		assertTrue(testee.division(0, 5) == 0);
 	}
 	
 	@Test(expected=ArithmeticException.class)
@@ -68,5 +158,7 @@ public class CalculatorTest {
 	public void testQuadrierenPrivateZweiPositiveNOk() {
 		//assertTrue(testee.quadrieren(6) == 36);
 	}
+	
+	
 
 }
