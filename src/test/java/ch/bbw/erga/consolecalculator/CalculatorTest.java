@@ -130,6 +130,11 @@ public class CalculatorTest {
 		assertTrue(testee.division(5, 5) == 1);
 	}
 	
+	@Test
+	public void testDivisionZeroAndPositiveIsOk() {
+		assertTrue(testee.division(0, 5) == 0);
+	}
+	
 	@Test(expected=ArithmeticException.class)
 	public void testDivisionDurchZeroIsNOk() {
 		testee.division(20, 0);
