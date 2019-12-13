@@ -96,6 +96,11 @@ public class CalculatorTest {
 	}
 	
 	@Test
+	public void testSubtraktionZweiPositivrLessThenZero() {
+		assertTrue(testee.subtraktion(10, 15) < 0);
+	}
+	
+	@Test
 	public void testDivisionZweiPositiveIsOk() {
 		assertTrue(testee.division(20, 10) == 2);
 	}
