@@ -115,6 +115,11 @@ public class CalculatorTest {
 		assertTrue(testee.division(-20, -10) == 2);
 	}
 	
+	@Test
+	public void testDivisionZweiMaxValueIsOne() {
+		assertTrue(testee.division(Integer.MAX_VALUE, Integer.MAX_VALUE) == 1);
+	}
+	
 	@Test(expected=ArithmeticException.class)
 	public void testDivisionDurchZeroIsNOk() {
 		testee.division(20, 0);
