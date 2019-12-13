@@ -15,6 +15,7 @@ public class App {
 		valueB = 20;
 		
 		System.out.println("Summe " + valueA + " + " + valueB + " = " + calculator.summe(10, 20));
+		calculator.quadratischeGleichung("x*x + 2x - 4 = 0");
 	}
 
 }
