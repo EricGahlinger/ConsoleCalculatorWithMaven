@@ -71,7 +71,14 @@ public class Calculator {
 								}
 								c = Double.parseDouble(variables[2]);
 								
-								
+								if(a == 0) {
+									return results;
+								} else if(b*b - 4*a*c <= 0) {
+									results.add(-b / (2*a));
+								} else {
+									results.add((-b + Math.sqrt(b*b - 4*a*c)) / (2*a));
+									results.add((-b - Math.sqrt(b*b - 4*a*c)) / (2*a));
+								}
 							} else {
 								throw new IllegalArgumentException();
 							}
