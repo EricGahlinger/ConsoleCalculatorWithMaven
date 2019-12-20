@@ -1,6 +1,11 @@
 package ch.bbw.erga.consolecalculator;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Ignore;
@@ -159,6 +164,12 @@ public class CalculatorTest {
 		//assertTrue(testee.quadrieren(6) == 36);
 	}
 	
-	
+	@Test
+	public void testQuadratischeGleichungIsOk() {
+		List<Double> results = new ArrayList<>();
+		results.add(-8.0);
+		results.add(2.0);
+		assertEquals(results, testee.quadratischeGleichung("x*x + 6x - 16 = 0"));
+	}
 
 }
