@@ -41,54 +41,56 @@ public class Calculator {
 		double a;
 		double b;
 		double c;
-		
+
 		rechnung = rechnung.replaceAll("\\s", "");
 
 		try {
 			double zero = Double.parseDouble(rechnung.split("=")[1]);
 			String calculationString = rechnung.split("=")[0];
 			if (zero == 0.0) {
-					if (calculationString.contains("x*x")) {
-						if (calculationString.contains("x")) {
-								String[] strA = calculationString.split("x*x");
-								//String[] strB = strA[1].split("x");
-								
-								if(strA[0].isEmpty()) {
-									a = 1;
-								} else {
-									a = Double.parseDouble(strA[0]);
-								}
-								if(strA[2].isEmpty()) {
-									b = 1;
-								} else {
-									b = Double.parseDouble(strA[2]);
-								}
-								c = Double.parseDouble(strA[3]);
-								
-								if(a == 0) {
-									return results;
-								} else if(b*b - 4*a*c <= 0) {
-									results.add(-b / (2*a));
-								} else {
-									results.add((-b + Math.sqrt(b*b - 4*a*c)) / (2*a));
-									results.add((-b - Math.sqrt(b*b - 4*a*c)) / (2*a));
-								}
+				if (calculationString.contains("x*x")) {
+					if (calculationString.contains("x")) {
+						String[] strA = calculationString.split("x*x");
+						// String[] strB = strA[1].split("x");
+
+						if (strA[0].isEmpty()) {
+							a = 1;
 						} else {
-							throw new IllegalArgumentException("Wrong format (b: x is missing)");
+							a = Double.parseDouble(strA[0]);
+						}
+						if (strA[2].isEmpty()) {
+							b = 1;
+						} else {
+							b = Double.parseDouble(strA[2]);
+						}
+						c = Double.parseDouble(strA[3]);
+
+						if (a == 0) {
+							throw new IllegalArgumentException("Wrong format (a: can't be 0)");
+						} else if ((b * b - 4 * a * c) == 0) {
+							results.add(-b / (2 * a));
+						} else if (b * b - 4 * a * c < 0) {
+							return results;
+						} else {
+							results.add((-b + Math.sqrt(b * b - 4 * a * c)) / (2 * a));
+							results.add((-b - Math.sqrt(b * b - 4 * a * c)) / (2 * a));
 						}
 					} else {
-						throw new IllegalArgumentException("Wrong format (a: x*x is missing)");
+						throw new IllegalArgumentException("Wrong format (b: x is missing)");
 					}
-					Collections.sort(results, new ResultsComperator());
-						
+				} else {
+					throw new IllegalArgumentException("Wrong format (a: x*x is missing)");
+				}
+				Collections.sort(results, new ResultsComperator());
+
 				return results;
 			} else {
 				throw new IllegalArgumentException("Wrong format (= 0 is missing)");
 			}
-		}catch(
+		} catch (
 
-	NumberFormatException n)
-	{
-		throw new IllegalArgumentException(n.getMessage());
+		NumberFormatException n) {
+			throw new IllegalArgumentException(n.getMessage());
+		}
 	}
-}}
+}

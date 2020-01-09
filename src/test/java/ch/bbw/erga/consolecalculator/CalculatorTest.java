@@ -178,4 +178,9 @@ public class CalculatorTest {
 		results.add(2.0);
 		assertEquals(results, testee.quadratischeGleichung("0.5x*x - 2x + 2 = 0"));
 	}
+	
+	@Test
+	public void testQuadratischeGleichungIsOkKeineLSG() {
+		assertTrue(testee.quadratischeGleichung("2x*x + 2x + 2 = 0").isEmpty());
+	}
 }
