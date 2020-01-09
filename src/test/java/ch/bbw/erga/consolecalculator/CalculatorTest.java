@@ -165,11 +165,17 @@ public class CalculatorTest {
 	}
 	
 	@Test
-	public void testQuadratischeGleichungIsOk() {
+	public void testQuadratischeGleichungIsOkZweiLSG() {
 		List<Double> results = new ArrayList<>();
 		results.add(-8.0);
 		results.add(2.0);
 		assertEquals(results, testee.quadratischeGleichung("x*x + 6x - 16 = 0"));
 	}
 
+	@Test
+	public void testQuadratischeGleichungIsOkEineLSG() {
+		List<Double> results = new ArrayList<>();
+		results.add(2.0);
+		assertEquals(results, testee.quadratischeGleichung("0.5x*x - 2x + 2 = 0"));
+	}
 }
