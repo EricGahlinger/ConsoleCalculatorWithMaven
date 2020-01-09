@@ -1,7 +1,6 @@
 package ch.bbw.erga.consolecalculator;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -197,5 +196,10 @@ public class CalculatorTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void testQuadratischeGleichungWrongFormatBIsMissing() {
 		testee.quadratischeGleichung("x*x + 3 - 1 = 0");
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testQuadratischeGleichungWrongFormatAIsZero() {
+		testee.quadratischeGleichung("0x*x + 3x - 1 = 0");
 	}
 }
