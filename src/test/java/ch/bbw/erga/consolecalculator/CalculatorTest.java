@@ -188,4 +188,9 @@ public class CalculatorTest {
 	public void testQuadratischeGleichungWrongFormatZeroIsMissing() {
 		testee.quadratischeGleichung("5x*x + 2x - 2 = 1");
 	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testQuadratischeGleichungWrongFormatAIsMissing() {
+		testee.quadratischeGleichung("2 - 3x - 5 = 0");
+	}
 }
