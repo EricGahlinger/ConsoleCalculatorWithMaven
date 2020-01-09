@@ -183,4 +183,9 @@ public class CalculatorTest {
 	public void testQuadratischeGleichungIsOkKeineLSG() {
 		assertTrue(testee.quadratischeGleichung("2x*x + 2x + 2 = 0").isEmpty());
 	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testQuadratischeGleichungWrongFormatZeroIsMissing() {
+		testee.quadratischeGleichung("5x*x + 2x - 2 = 1");
+	}
 }
