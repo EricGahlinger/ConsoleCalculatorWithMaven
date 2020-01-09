@@ -1,10 +1,8 @@
 package ch.bbw.erga.consolecalculator;
 
-import java.lang.Character.UnicodeScript;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-
-import javax.management.relation.RelationServiceNotRegisteredException;
 
 /**
  * 
@@ -43,60 +41,55 @@ public class Calculator {
 		double a;
 		double b;
 		double c;
-		
+
 		rechnung = rechnung.replaceAll("\\s", "");
 
 		try {
 			double zero = Double.parseDouble(rechnung.split("=")[1]);
 			String calculationString = rechnung.split("=")[0];
 			if (zero == 0.0) {
-				String[] variables = calculationString.split("[+-]");
+				if (calculationString.contains("x*x")) {
+					if (calculationString.contains("x")) {
+						String[] strA = calculationString.split("x*x");
+						// String[] strB = strA[1].split("x");
 
-				if (variables.length == 3) {
-					if (variables[0].contains("x*x")) {
-						if (variables[1].contains("x")) {
-							if (!variables[2].contains("x")) {
-								String strA = variables[0].split("x*x")[0];
-								String strB = variables[1].split("x")[0];
-								
-								if(strA.isEmpty()) {
-									a = 1;
-								} else {
-									a = Double.parseDouble(strA);
-								}
-								if(strB.isEmpty()) {
-									b = 1;
-								} else {
-									b = Double.parseDouble(strB);
-								}
-								c = Double.parseDouble(variables[2]);
-								
-								if(a == 0) {
-									return results;
-								} else if(b*b - 4*a*c <= 0) {
-									results.add(-b / (2*a));
-								} else {
-									results.add((-b + Math.sqrt(b*b - 4*a*c)) / (2*a));
-									results.add((-b - Math.sqrt(b*b - 4*a*c)) / (2*a));
-								}
-							} else {
-								throw new IllegalArgumentException();
-							}
+						if (strA[0].isEmpty()) {
+							a = 1;
 						} else {
-							throw new IllegalArgumentException();
+							a = Double.parseDouble(strA[0]);
+						}
+						if (strA[2].isEmpty()) {
+							b = 1;
+						} else {
+							b = Double.parseDouble(strA[2]);
+						}
+						c = Double.parseDouble(strA[3]);
+
+						if (a == 0) {
+							throw new IllegalArgumentException("Wrong format (a: can't be 0)");
+						} else if ((b * b - 4 * a * c) == 0) {
+							results.add(-b / (2 * a));
+						} else if (b * b - 4 * a * c < 0) {
+							return results;
+						} else {
+							results.add((-b + Math.sqrt(b * b - 4 * a * c)) / (2 * a));
+							results.add((-b - Math.sqrt(b * b - 4 * a * c)) / (2 * a));
 						}
 					} else {
-						throw new IllegalArgumentException();
+						throw new IllegalArgumentException("Wrong format (b: x is missing)");
 					}
 				} else {
-					throw new IllegalArgumentException();
+					throw new IllegalArgumentException("Wrong format (a: x*x is missing)");
 				}
+				Collections.sort(results, new ResultsComperator());
 
 				return results;
 			} else {
-				throw new IllegalArgumentException();
+				throw new IllegalArgumentException("Wrong format (= 0 is missing)");
 			}
-		} catch (NumberFormatException n) {
+		} catch (
+
+		NumberFormatException n) {
 			throw new IllegalArgumentException(n.getMessage());
 		}
 	}

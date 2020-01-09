@@ -1,6 +1,10 @@
 package ch.bbw.erga.consolecalculator;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Ignore;
@@ -159,6 +163,43 @@ public class CalculatorTest {
 		//assertTrue(testee.quadrieren(6) == 36);
 	}
 	
-	
+	@Test
+	public void testQuadratischeGleichungIsOkZweiLSG() {
+		List<Double> results = new ArrayList<>();
+		results.add(-8.0);
+		results.add(2.0);
+		assertEquals(results, testee.quadratischeGleichung("x*x + 6x - 16 = 0"));
+	}
 
+	@Test
+	public void testQuadratischeGleichungIsOkEineLSG() {
+		List<Double> results = new ArrayList<>();
+		results.add(2.0);
+		assertEquals(results, testee.quadratischeGleichung("0.5x*x - 2x + 2 = 0"));
+	}
+	
+	@Test
+	public void testQuadratischeGleichungIsOkKeineLSG() {
+		assertTrue(testee.quadratischeGleichung("2x*x + 2x + 2 = 0").isEmpty());
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testQuadratischeGleichungWrongFormatZeroIsMissing() {
+		testee.quadratischeGleichung("5x*x + 2x - 2 = 1");
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testQuadratischeGleichungWrongFormatAIsMissing() {
+		testee.quadratischeGleichung("2 - 3x - 5 = 0");
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testQuadratischeGleichungWrongFormatBIsMissing() {
+		testee.quadratischeGleichung("x*x + 3 - 1 = 0");
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testQuadratischeGleichungWrongFormatAIsZero() {
+		testee.quadratischeGleichung("0x*x + 3x - 1 = 0");
+	}
 }
