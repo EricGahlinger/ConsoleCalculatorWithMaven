@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * Calculator
  * 
  * @author eric.gahlinger
  * @version 27.09.2019
